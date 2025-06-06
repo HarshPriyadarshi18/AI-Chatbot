@@ -1,0 +1,35 @@
+.Chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f1f1f1;
+}
+
+.Message {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Bot messages on left */
+[data-role="bot"] {
+  align-self: flex-start;
+  background-color: #e5e5ea;
+  color: #000;
+  border-top-left-radius: 0;
+}
+
+/* User messages on right */
+[data-role="user"] {
+  align-self: flex-end;
+  background-color: #007aff;
+  color: #fff;
+  border-top-right-radius: 0;
+}
