@@ -3,7 +3,11 @@ import styles from './App.module.css'
 import {Chat} from './Components/chat'
 import { Controls } from './Components/controls';
 function App() {
-  const [messages,setMessages]=useState(MESSAGES);
+ // const [messages,setMessages]=useState(MESSAGES);
+   const [messages,setMessages]=useState([]);
+   function handleContentSend(content){
+     setMessages((prevMessages)=>[...prevMessages,{content,role:'user'}])
+   }
  return (
   <div className={styles.App}>
     <header className={styles.Header}>
@@ -13,10 +17,11 @@ function App() {
     <div className={styles.chatContainer}>
      <Chat messages={messages} />
    </div>
-     <Controls/>
+     <Controls onSend={handleContentSend}/>
   </div>
  );
 }
+/*
 const MESSAGES=[
   {
     role:'user',
@@ -51,6 +56,6 @@ const MESSAGES=[
     content:" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
 
-]
+]*/
 
 export default App
