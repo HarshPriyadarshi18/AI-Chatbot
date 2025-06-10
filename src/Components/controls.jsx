@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './Controls.module.css';
+import styles from './controls.module.css';
 
 export function Controls({onSend}){
   const [content,setContent]=useState("");
