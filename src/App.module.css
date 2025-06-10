@@ -22,7 +22,7 @@
 .chatContainer {
   flex-grow: 1;
   width: 100%;
-  background: #ffffff;
+  background:light-dark(#212121,#ffffff) ;
   border-radius: 16px;
   overflow-y: auto;
 }

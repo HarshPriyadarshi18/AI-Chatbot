@@ -4,14 +4,14 @@
   justify-content: center;
   padding: 16px;
   gap: 16px;
-  background: #f1f1f1;
+  background:light-dark(#ffffff,#212121);
 }
 
 .TextAreaContainer {
   flex: 1;
   padding: 8px 16px;
   border-radius: 16px;
-  background: #ffffff;
+  background: light-dark(#ffffff,#212121);
 }
 
 .TextArea {
@@ -20,7 +20,7 @@
   resize: none;
   border: none;
   outline: none;
-  background: #ffffff;
+  background:light-dark(#ffffff,#212121);
 }
 .Button {
   display: flex;
@@ -35,5 +35,5 @@
 }
 
 .Button svg {
-  fill: #f3f3f3;
+  fill: light-dark(#ffffff,#212121);
 }

@@ -5,7 +5,7 @@
   height: 100%;
   padding: 16px;
   overflow-y: auto;
-  background: #f1f1f1;
+  background:light-dark(#ffffff,#212121);
 }
 
 .Message {
@@ -29,7 +29,7 @@
 /* User messages on right */
 [data-role="user"] {
   align-self: flex-end;
-  background-color: #007aff;
+  background-color: #67a7ea;
   color: #fff;
   border-top-right-radius: 0;
 }
