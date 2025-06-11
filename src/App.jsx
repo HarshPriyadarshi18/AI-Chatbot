@@ -4,6 +4,7 @@ import styles from './App.module.css'
 import {Chat} from './Components/chat'
 import { Controls } from './Components/controls';
 import { Loader } from './Components/Loader';
+import { Sidebar } from './Components/Sidebar';
 function App() {
  // const [messages,setMessages]=useState(MESSAGES);
    const [messages,setMessages]=useState([]);
@@ -33,13 +34,19 @@ function App() {
   <div className={styles.App}>
    {isLoading && <Loader/>} 
     <header className={styles.Header}>
+      
        <img className={styles.Logo}  src="chat-bot.png"/>
        <h2 className={styles.Title}>AI Chatbot</h2>
     </header>
+    <div className={styles.Content}>
+    <Sidebar/>
+    <main className={styles.Main}>
     <div className={styles.chatContainer}>
      <Chat messages={messages} />
    </div>
      <Controls onSend={handleContentSend}/>
+     </main>
+  </div>
   </div>
  );
 }

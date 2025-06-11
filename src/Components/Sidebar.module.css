@@ -1,0 +1,32 @@
+.Sidebar {
+  flex-shrink: 0;
+  width: 200px;
+  padding: 8px;
+  border-radius: 16px;
+  height: 100%;            /* Match Main height */
+  overflow-y: auto;        /* Enable scrolling */
+  background-color: #f5f5f5; /* Optional: Visual contrast */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1); /* Optional */
+}
+
+.Chats{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.chatbutton:hover{
+    border-color: light-dark(#d3d3d3,#3f3f3f);
+}
+
+.chattitle{
+    white-space: nowrap;
+    overflow: hidden;
+}
+.chat[data-active="true"].chatbutton {
+   background: light-dark(#ffffff,#212121);
+   border-color: transparent;
+   cursor: default;
+}
