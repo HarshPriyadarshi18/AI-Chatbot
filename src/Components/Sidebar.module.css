@@ -5,8 +5,8 @@
   border-radius: 16px;
   height: 100%;            /* Match Main height */
   overflow-y: auto;        /* Enable scrolling */
-  background-color: #f5f5f5; /* Optional: Visual contrast */
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1); /* Optional */
+  background-color: #1e1e1e; /* Optional: Visual contrast */
+   transition: transform 0.3s ease-in-out;
 }
 
 .Chats{
@@ -16,17 +16,84 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    
 }
 .chatbutton:hover{
-    border-color: light-dark(#d3d3d3,#3f3f3f);
+    border-color: #1e1e1e;
+    background-color: #1e1e1e;
 }
 
+.MenuButton{
+        position: fixed;
+        top:16px;
+        left:16px;
+        z-index: 3;
+        display:none;
+        padding: 8px;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+    .MenuButton svg{
+        vertical-align: middle;
+        fill:aqua;
+    }
+  
 .chattitle{
     white-space: nowrap;
     overflow: hidden;
+    
 }
 .chat[data-active="true"].chatbutton {
-   background: light-dark(#ffffff,#212121);
-   border-color: transparent;
+   background-color:#1e1e1e;
+   border-color: white;
    cursor: default;
+}
+.chatbutton {
+  background-color: #2c2c2c;  /* Default dark background */
+  color: #ffffff;             /* White text */
+  border: 1px solid #1e1e1e;     /* Optional border */
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+ .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  animation: fadeIn 0.3s ease-in-out;
+  content: "";
+}
+@media screen and (max-width:768px) {
+    .Sidebar{
+        position: fixed;
+        top:0;
+        left: 0;
+        z-index: 2;
+        height: 100%;
+        padding: 72px 16px 16px;
+        border-radius: 0;
+        background: light-dark(#f5f5f5,#1e1e1e);
+        transform: translateX(-100%);
+    }
+    .Sidebar[data-open="true"]{
+        transform: translateX(0);
+    }
+    .MenuButton{
+        display:block;
+    }
+    
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
