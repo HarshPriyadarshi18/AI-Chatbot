@@ -1,99 +1,120 @@
 .Sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   flex-shrink: 0;
   width: 200px;
   padding: 8px;
   border-radius: 16px;
-  height: 100%;            /* Match Main height */
-  overflow-y: auto;        /* Enable scrolling */
-  background-color: #1e1e1e; /* Optional: Visual contrast */
-   transition: transform 0.3s ease-in-out;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #1e1e1e;
+  transition: transform 0.3s ease-in-out;
+}
+.newchatbutton{
+  width:100%;
+  padding:12px;
+  background: none;
+  border:2px dashed light-dark(#d3d3d3,#3f3f3f);
+  border-radius: 8px;
+  text-align: center;
+  cursor:pointer;
+  color: light-dark(#212121,#ffffff);
+}
+.Chats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.Chats{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    
-}
-.chatbutton:hover{
-    border-color: #1e1e1e;
-    background-color: #1e1e1e;
+.Chat {
+  margin: 4px 0;
 }
 
-.MenuButton{
-        position: fixed;
-        top:16px;
-        left:16px;
-        z-index: 3;
-        display:none;
-        padding: 8px;
-        border: none;
-        background: none;
-        cursor: pointer;
-    }
-    .MenuButton svg{
-        vertical-align: middle;
-        fill:aqua;
-    }
-  
-.chattitle{
-    white-space: nowrap;
-    overflow: hidden;
-    
+.Chat[data-active="true"] .chatbutton {
+  background-color: #1e1e1e;
+  border-color: white;
+  cursor: default;
 }
-.chat[data-active="true"].chatbutton {
-   background-color:#1e1e1e;
-   border-color: white;
-   cursor: default;
-}
+
 .chatbutton {
-  background-color: #2c2c2c;  /* Default dark background */
-  color: #ffffff;             /* White text */
-  border: 1px solid #1e1e1e;     /* Optional border */
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border: 1px solid #1e1e1e;
   border-radius: 8px;
   padding: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease;
+  width: 100%;
+  text-align: left;
 }
- .overlay {
+
+.chatbutton:hover {
+  background-color: #1e1e1e;
+  border-color: #aaa;
+}
+
+.chattitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.MenuButton {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  display: none;
+  padding: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.MenuButton svg {
+  vertical-align: middle;
+  fill: aqua;
+}
+
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  background: rgba(0, 0, 0, 0.5);
   animation: fadeIn 0.3s ease-in-out;
-  content: "";
 }
-@media screen and (max-width:768px) {
-    .Sidebar{
-        position: fixed;
-        top:0;
-        left: 0;
-        z-index: 2;
-        height: 100%;
-        padding: 72px 16px 16px;
-        border-radius: 0;
-        background: light-dark(#f5f5f5,#1e1e1e);
-        transform: translateX(-100%);
-    }
-    .Sidebar[data-open="true"]{
-        transform: translateX(0);
-    }
-    .MenuButton{
-        display:block;
-    }
-    
-}
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media screen and (max-width: 768px) {
+  .Sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    padding: 72px 16px 16px;
+    border-radius: 0;
+    background: light-dark(#f5f5f5, #1e1e1e);
+    transform: translateX(-100%);
   }
-  to {
-    opacity: 1;
+
+  .Sidebar[data-open="true"] {
+    transform: translateX(0);
+  }
+
+  .MenuButton {
+    display: block;
   }
 }
+
