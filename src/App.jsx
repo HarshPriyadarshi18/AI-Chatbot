@@ -70,6 +70,7 @@ function App() {
         {/* Sidebar with chat list */}
         <Sidebar
           chats={chats}
+          messages={messages}
           activeChatId={activeChatId}
           onSelectChat={(id) => setActiveChatId(id)}
           onnewchatcreate={handlenewchatcreate}

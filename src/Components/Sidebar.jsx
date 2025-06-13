@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './Sidebar.module.css';
 
-export function Sidebar({ chats = [], activeChatId = null, onSelectChat = () => {},onnewchatcreate }) {
+export function Sidebar({ chats = [], activeChatId = null, onSelectChat = () => {},onnewchatcreate,messages }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleToggle() {
@@ -19,25 +19,32 @@ export function Sidebar({ chats = [], activeChatId = null, onSelectChat = () => 
 
       {/* Sidebar Panel */}
       <div className={styles.Sidebar} data-open={isOpen}>
-        <button className={styles.newchatbutton} onClick={onnewchatcreate}>New Chat</button>
+        <button className={styles.newchatbutton} disabled={messages.length===0} onClick={onnewchatcreate}>New Chat</button>
         <ul className={styles.Chats}>
-          {chats.map((chat) => (
-            <li
-              key={chat.id}
-              className={styles.Chat}
-              data-active={chat.id === activeChatId}
-            >
-              <button
-                className={styles.chatbutton}
-                onClick={() => {
-                  onSelectChat(chat.id);
-                  setIsOpen(false); // optional: auto-close on chat selection
-                }}
-              >
-                <div className={styles.chattitle}>{chat.title}</div>
-              </button>
-            </li>
-          ))}
+       {(chats || [])
+  .filter(
+    ({ title, messages }) =>
+      !title?.toLowerCase().startsWith("new chat") || 
+      (Array.isArray(messages) && messages.length > 0)
+  )
+  .map((chat) => (
+    <li
+      key={chat.id}
+      className={styles.Chat}
+      data-active={chat.id === activeChatId}
+    >
+      <button
+        className={styles.chatbutton}
+        onClick={() => {
+          onSelectChat(chat.id);
+          setIsOpen(false);
+        }}
+      >
+        <div className={styles.chattitle}>{chat.title}</div>
+      </button>
+    </li>
+))}
+
         </ul>
       </div>
 
