@@ -9,9 +9,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Initial chat list
 const CHATS = [
-  { id: 1, title: "How to use AI Tools API in React Application" },
-  { id: 2, title: "Gemini AI vs ChatGPT" },
-  { id: 3, title: "Comparing Models for Popular AI Tools" },
+  { id: 1, title: "How to use AI Tools API in React Application", temp: false },
+  { id: 2, title: "Gemini AI vs ChatGPT", temp: false },
+  { id: 3, title: "Comparing Models for Popular AI Tools", temp: false },
 ];
 
 function App() {
@@ -34,6 +34,15 @@ function App() {
 
   // Handle user message
   async function handleContentSend(content) {
+    // If it's a new chat with placeholder title, update it with actual content
+    setChats(prevChats =>
+      prevChats.map(chat =>
+        chat.id === activeChatId && chat.temp
+          ? { ...chat, title: content.slice(0, 30), temp: false }
+          : chat
+      )
+    );
+
     addMessage({ content, role: "user" });
     setIsLoading(true);
     try {
@@ -52,7 +61,7 @@ function App() {
   // Create a new chat
   function handlenewchatcreate() {
     const id = uuidv4();
-    const newChat = { id, title: `New Chat ${chats.length + 1}` };
+    const newChat = { id, title: `New Chat`, temp: true };
     setChats(prev => [...prev, newChat]);
     setActiveChatId(id);
     setMessagesByChatId(prev => ({ ...prev, [id]: [] }));
